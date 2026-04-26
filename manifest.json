@@ -1,0 +1,16 @@
+{
+  "name": "HD Motors & Garage",
+  "short_name": "HD Motors",
+  "description": "Family-Owned 20+ Years | Harley Davidson Parts",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ff6b00",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
