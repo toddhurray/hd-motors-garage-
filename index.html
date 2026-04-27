@@ -46,13 +46,14 @@
         <option value="all">All Categories</option>
         <option value="Engine">Engine</option>
         <option value="Exhaust">Exhaust</option>
-      <option value="Suspension">Suspension</option>
+        <option value="Suspension">Suspension</option>
+      </select>
     </div>
     <div class="parts-grid" id="parts-grid"></div>
   </div>
 
   <footer>
-    <p>&copy; 2026 HD Motors & Garage | Indianapolis IN, USA</p>
+    <p>&copy; 2026 HD Motors & Garage | Texas, USA</p>
     <p><a href="mailto:hdmotorsgarage@gmail.com" style="color:var(--orange)">hdmotorsgarage@gmail.com</a></p>
   </footer>
 
@@ -64,7 +65,7 @@
         price: 2200,
         category: "Engine",
         fitment: "Touring/Dyna/Softail Twin Cam models",
-        desc: "BRAND NEW 110\" CVO Screamin Eagle Twin Cam. Dealer take-off with 0 MILES on odometer. Removed for larger crate engine swap. Includes what you see. $2200 + shipping",
+        desc: "BRAND NEW 110\" CVO Screamin Eagle Twin Cam. Dealer take-off with 0 MILES on odometer. Removed for larger crate engine swap. Includes what you see. $2200 + shipping. Contact for exact quote.",
         img: "https://i.postimg.cc/FsNW7KBV/IMG-7267.jpg"
       },
       {
@@ -73,18 +74,19 @@
         price: 450,
         category: "Exhaust",
         fitment: "2023 Road Glide ST / M8 Touring models",
-        desc: "Vance & Hines High Output 2-into-1 exhaust with heat shields. Only 2500 miles. Pulled from 2023 Road Glide ST. Black finish. Includes pipe and heat shields.$450+shpping.",
-        img:         "https://i.postimg.cc/V6Yh2Bb3/IMG-7234.jpg"
-      }
+        desc: "Vance & Hines High Output 2-into-1 exhaust with heat shields. Only 2500 miles. Pulled from 2023 Road Glide ST. Black finish. Includes pipe and heat shields. $450 + shipping.",
+        img: "https://i.postimg.cc/V6Yh2Bb3/IMG-7234.jpg"
+      },
       {
-    id: 3,
-    name: "Ohlins HD779 Rear Shocks - Brand New",
-    price: 700,
-    category: "Suspension",
-    fitment: "2014-2026 Harley Touring models",
-    desc: "Brand new Ohlins HD779 rear shocks. Never installed, still in box. Includes remote reservoirs and mounting hardware shown. Fits 2014-2026 Touring. $700 + shipping.",
-    img:https://i.postimg.cc/V6Yh2Bb3/IMG-7234.jpg
-  },
+        id: 3,
+        name: "Ohlins HD779 Rear Shocks - Brand New",
+        price: 700,
+        category: "Suspension",
+        fitment: "2014-2026 Harley Touring models",
+        desc: "Brand new Ohlins HD779 rear shocks. Never installed, still in box. Includes remote reservoirs and mounting hardware shown. Fits 2014-2026 Touring. $700 + shipping.",
+        img: "REPLACE_THIS_WITH_YOUR_OHLINS_IMAGE_LINK"
+      }
+    ];
 
     function renderParts(filter = 'all') {
       const grid = document.getElementById('parts-grid');
@@ -98,7 +100,7 @@
               <h3>${part.name}</h3>
               <p>${part.fitment}</p>
               <p>${part.desc}</p>
-              <div class="part-price">$${part.price}</div>
+              <div class="part-price">$${part.price} + shipping</div>
               <a href="mailto:hdmotorsgarage@gmail.com?subject=Inquiry: ${part.name}" class="btn">Contact to Buy</a>
             </div>
           </div>
