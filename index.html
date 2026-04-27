@@ -46,7 +46,7 @@
         <option value="all">All Categories</option>
         <option value="Engine">Engine</option>
         <option value="Exhaust">Exhaust</option>
-      </select>
+      <option value="Suspension">Suspension</option>
     </div>
     <div class="parts-grid" id="parts-grid"></div>
   </div>
@@ -74,9 +74,17 @@
         category: "Exhaust",
         fitment: "2023 Road Glide ST / M8 Touring models",
         desc: "Vance & Hines High Output 2-into-1 exhaust with heat shields. Only 2500 miles. Pulled from 2023 Road Glide ST. Black finish. Includes pipe and heat shields.$450+shpping.",
-        img: "https://i.postimg.cc/V6Yh2Bb3/IMG-7234.jpg"
+        img:         "https://i.postimg.cc/V6Yh2Bb3/IMG-7234.jpg"
       }
-    ];
+      {
+    id: 3,
+    name: "Ohlins HD779 Rear Shocks - Brand New",
+    price: 700,
+    category: "Suspension",
+    fitment: "2014-2026 Harley Touring models",
+    desc: "Brand new Ohlins HD779 rear shocks. Never installed, still in box. Includes remote reservoirs and mounting hardware shown. Fits 2014-2026 Touring. $700 + shipping.",
+    img:https://i.postimg.cc/V6Yh2Bb3/IMG-7234.jpg
+  },
 
     function renderParts(filter = 'all') {
       const grid = document.getElementById('parts-grid');
