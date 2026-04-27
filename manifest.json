@@ -7,10 +7,10 @@
   "background_color": "#000000",
   "theme_color": "#ff6b00",
   "icons": [
-    {
-      "src": "https://picsum.photos/512",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
-}
+    "icons": [
+  {
+    "src": "https://i.postimg.cc/Ff0N2C3j/IMG-7259.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }
+]
