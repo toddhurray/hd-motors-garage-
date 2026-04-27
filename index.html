@@ -22,8 +22,11 @@
     .btn { display: inline-block; background: var(--orange); color: #000; padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 5px; margin-top: 10px; }
     .filters { display: flex; gap: 15px; flex-wrap: wrap; margin: 20px 0; }
     .filters select { padding: 10px; background: var(--dark); color: #fff; border: 1px solid #333; border-radius: 5px; }
+    .warehouse { background: var(--dark); border: 2px solid var(--orange); border-radius: 8px; padding: 40px; margin: 60px 0; text-align: center; }
+    .warehouse-img { width: 100%; max-width: 900px; border-radius: 8px; margin: 20px auto; display: block; }
+    .warehouse h2 { color: var(--orange); font-size: 2rem; margin-bottom: 15px; }
     footer { background: #000; text-align: center; padding: 30px; margin-top: 60px; border-top: 3px solid var(--orange); }
-    @media (max-width: 768px) { .hero h1 { font-size: 2rem; } }
+    @media (max-width: 768px) { .hero h1 { font-size: 2rem; } .warehouse h2 { font-size: 1.5rem; } }
   </style>
 </head>
 <body>
@@ -47,9 +50,25 @@
         <option value="Engine">Engine</option>
         <option value="Exhaust">Exhaust</option>
         <option value="Suspension">Suspension</option>
+        <option value="Controls">Controls</option>
+        <option value="Wheels">Wheels</option>
+        <option value="Seats">Seats</option>
+        <option value="Handlebars">Handlebars</option>
+        <option value="Tanks">Tanks</option>
+        <option value="Luggage">Luggage</option>
+        <option value="Body">Body</option>
       </select>
     </div>
     <div class="parts-grid" id="parts-grid"></div>
+
+    <section class="warehouse">
+      <h2>Hello Riders 🏍️</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 20px;">We've got plenty of aftermarket Harley Davidson parts available for sale.</p>
+      <img src="https://i.postimg.cc/SKPwt9N8/IMG-7299.jpg" alt="HD Motors Warehouse Inventory" class="warehouse-img">
+      <p style="font-size: 1.1rem; margin: 20px 0;">Tanks, fenders, saddlebags, fairings, tour packs, seats, bars, and more. OEM and aftermarket.</p>
+      <p style="font-size: 1.3rem; color: var(--orange); font-weight: bold;">Don't see what you need? Message us directly.</p>
+      <a href="mailto:hdmotorsgarage@gmail.com?subject=Parts Inquiry" class="btn" style="margin-top: 20px;">Contact Us Now</a>
+    </section>
   </div>
 
   <footer>
@@ -85,6 +104,150 @@
         fitment: "2014-2026 Harley Touring models",
         desc: "Brand new Ohlins HD779 rear shocks. Never installed, still in box. Includes remote reservoirs and mounting hardware shown. Fits 2014-2026 Touring. $700 + shipping.",
         img: "https://i.postimg.cc/0NnB7WtK/IMG-7279.jpg"
+      },
+      {
+        id: 4,
+        name: "Flo Motorsports V5 Bagger Floorboards + Brake Kit",
+        price: 250,
+        category: "Controls",
+        fitment: "1984-2026 Harley Touring models",
+        desc: "Set of Flo Motorsports V5 Bagger floorboards in black. Includes adjustable brake arm and matching peg. Very good condition, no scrapes at all. Fits 84-25 Touring. $250 + shipping for complete set.",
+        img: "https://i.postimg.cc/sf9Tt0PF/IMG-7281.jpg"
+      },
+      {
+        id: 5,
+        name: "OEM Harley Prodigy Wheel Set - 2020 Road Glide Special",
+        price: 1500,
+        category: "Wheels",
+        fitment: "2017-2026 Harley Touring models",
+        desc: "OEM Harley Prodigy wheels off 2020 Road Glide Special. 19x3.50 front with NEW Shinko 777 130/60/19. 18x5.00 cush drive rear with Shinko 999 180/55/18 - tire is bald. Wheels in excellent condition. $1500 + shipping.",
+        img: "https://i.postimg.cc/XYwq8dST/IMG-7282.jpg"
+      },
+      {
+        id: 6,
+        name: "Custom Touring Seat - Marine Suede Diamond Stitch",
+        price: 400,
+        category: "Seats",
+        fitment: "2009-2023 Harley Touring models",
+        desc: "Brand new custom seat. Re-trimmed in black marine grade suede - UV stabilized, water resistant. Blacked out badge, custom embroidered pillion, white double diamond stitched fade-out insert. Never been sat on. Fits 2009-2023 Touring. $400 + shipping. Core exchange available.",
+        img: "https://i.postimg.cc/XJTXL8JH/IMG-7283.jpg"
+      },
+      {
+        id: 7,
+        name: "1977 XLCR 7-Spoke Morris Mag Wheels - Restored 3-Disc Set",
+        price: 700,
+        category: "Wheels",
+        fitment: "1977 Harley XLCR Cafe Racer - One Year Only OEM",
+        desc: "Rare OEM 1977 XLCR 7-spoke Morris Mag 3-disc wheels. Used on all 1977 Harley Factory XLCR Cafe Racers. Restored to factory condition. Comes with all needed hardware. Probably the best restored set available. $700 + shipping.",
+        img: "https://i.postimg.cc/GmJgvLzC/IMG-7284.jpg"
+      },
+      {
+        id: 8,
+        name: "KST Pathfinder 16\" Apes + LA Choppers Riser + HD Grips",
+        price: 500,
+        category: "Handlebars",
+        fitment: "Road King, Road Glide, Softail models",
+        desc: "KST Pathfinder 16 inch fully adjustable ape hangers. Includes LA Choppers riser with built-in set screws and Harley Davidson grips. Only 7 months old. Fits Road King, Road Glide, Softail. $500 + shipping for complete setup.",
+        img: "https://i.postimg.cc/xdBs2X18/IMG-7285.jpg"
+      },
+      {
+        id: 9,
+        name: "Bassani Mid Length 2-1 Super Bike Exhaust - M8 Bagger",
+        price: 500,
+        category: "Exhaust",
+        fitment: "2017-Up Harley Touring Bagger models",
+        desc: "Bassani Mid Length 2-into-1 Super Bike exhaust system. Stainless finish. Includes mounting bracket and hardware shown. Fits 2017-Up M8 Baggers. Deep, aggressive sound. $500 + shipping.",
+        img: "https://i.postimg.cc/mgHznkKZ/IMG-7286.jpg"
+      },
+      {
+        id: 10,
+        name: "Matte Black Enforcer Wheels + Pulley - Touring",
+        price: 600,
+        category: "Wheels",
+        fitment: "2009-Up Harley Touring models",
+        desc: "Matte black Enforcer wheels with matching pulley. 19\" front / 18\" rear. Clean finish, ready to bolt on. Fits 2009-Up Touring models and other HD models with proper adapters. $600 + shipping.",
+        img: "https://i.postimg.cc/vZsgpbys/IMG-7287.jpg"
+      },
+      {
+        id: 11,
+        name: "Vivid Black Fatboy Tank - 08-17 - No Pump",
+        price: 300,
+        category: "Tanks",
+        fitment: "2008-2017 Harley Fatboy models",
+        desc: "Vivid Black fuel tank with red lettering for 08-17 Fatboy. Does NOT include fuel pump. Needs a good clean out inside. Great condition externally or use as shed ornament. $300 + shipping.",
+        img: "https://i.postimg.cc/x13RZ6Wx/IMG-7288.jpg"
+      },
+      {
+        id: 12,
+        name: "Advanblack King Tour Pack - Billiard Gray Loaded",
+        price: 500,
+        category: "Luggage",
+        fitment: "2014-2023 Harley Touring models",
+        desc: "Advanblack King Tour Pack in Billiard Gray with black leather wrap-around backrest. Built-in speaker pods, full interior carpet liner, rear LED light bar with wiring harnesses. Chrome latch and lock set installed. Excellent condition. $500 + shipping.",
+        img: "https://i.postimg.cc/0Nm8xJ0B/IMG-7289.jpg"
+      },
+      {
+        id: 13,
+        name: "OVER Racing SS11 Rearsets - Buell S1/X1/Sportster",
+        price: 437,
+        category: "Controls",
+        fitment: "1999 Buell S1 Lightning, X1, M2, S3 / XL883, XL1200 Sportster",
+        desc: "Rare OVER Racing Japan SS11 aftermarket rearsets for Buell S1 Lightning 1999. Billet aluminum with adjustable pegs. Includes shift linkage, brake lever, and mounting hardware shown. Also fits Buell X1, M2, S3 and Sportster XL883/XL1200 with adapters. $437 + shipping.",
+        img: "https://i.postimg.cc/KvrpXcTP/IMG-7290.jpg"
+      },
+      {
+        id: 14,
+        name: "Rebuilt 103\" Twin Cam A - S&S 570 / Wiseco / Trued Crank",
+        price: 5340,
+        category: "Engine",
+        fitment: "1999-2006 Harley Twin Cam A Touring/Dyna/Softail",
+        desc: "Fully rebuilt 103\" Twin Cam A engine with new powder coat. Head work: AV&V springs, .025\" over valves, guides replaced. S&S 570 cams, cam bearings, lifters. Wiseco Hi-Performance forged piston kit. 96\" jugs bored to 103\" specs. Crank trued and welded. Case had only 14,000 kms. Engine stand included. $5340 + shipping.",
+        img: "https://i.postimg.cc/269m7FkH/IMG-7291.jpg"
+      },
+      {
+        id: 15,
+        name: "FXLRS Front Fork Set - 49mm Dual Disc - M8 Softail",
+        price: 540,
+        category: "Suspension",
+        fitment: "2018-2024 Harley Softail Low Rider S / M8 Softail",
+        desc: "OEM Harley FXLRS Low Rider S front fork assembly. 49mm Showa dual-disc forks with triple trees and hardware shown. Fits 2018-2024 M8 Softail models. Clean take-off condition. $540 + shipping.",
+        img: "https://i.postimg.cc/wx5nzk8f/IMG-7292.jpg"
+      },
+      {
+        id: 16,
+        name: "Bassani Stainless 2-1 Super Bike Shorty - M8 Softail",
+        price: 400,
+        category: "Exhaust",
+        fitment: "2018-Up Harley M8 Softail: Low Rider S, Street Bob, Fat Bob",
+        desc: "Bassani Stainless Steel 2-into-1 Super Bike muffler - short/slim version. Raw stainless finish. Great condition, ready to install. Fits 2018-Up M8 Softails: Low Rider, Low Rider S, Street Bob, Fat Bob. Aggressive sound, weight savings. $400 + shipping.",
+        img: "https://i.postimg.cc/3NSM2ghh/IMG-7293.jpg"
+      },
+      {
+        id: 17,
+        name: "Complete Paint Set - 14-23 Ultra Classic - Superior Blue",
+        price: 2200,
+        category: "Body",
+        fitment: "2014-2023 Harley Davidson Ultra Classic FLHTCU",
+        desc: "Complete OEM paint set in Superior Blue. Includes: fuel tank, front fender, rear fender, saddlebags with lids, side covers, inner/outer fairing, and tour pack with luggage rack. Fits 2014-2023 Ultra Classic. Great condition overall. $2200 + shipping for all.",
+        img: "https://i.postimg.cc/V6FW0Btc/IMG-7295.jpg"
+      },
+      {
+        id: 18,
+        name: "Detachable Sissy Bar Backrest - 09+ Touring - Your Choice",
+        price: 200,
+        category: "Seats",
+        fitment: "2009-2026 Harley Touring models: Street Glide, Road Glide, Road King, Electra Glide",
+        desc: "Aftermarket detachable sissy bar backrests with mounting brackets. Multiple styles available: standard height, tall, with/without luggage rack. Fits 2009-Up Touring models with 4-point docking hardware. Your choice from inventory shown. $200 each + shipping.",
+        img: "https://i.postimg.cc/sXJtcN8T/IMG-7296.jpg"
+      },
+      {
+        id: 19,
+        name: "Vance & Hines Big Radius 2-2 Chrome - M8 Softail - NEW",
+        price: 500,
+        category: "Exhaust",
+        fitment: "2018-2021 Harley Softail Street Bob FXBB / 2018+ M8 Softail",
+        desc: "Genuine Vance & Hines Big Radius 2-into-2 exhaust system. Part #26077. Unused complete kit in original condition. Chrome finish with full mounting bracket, hardware, clamps, and instructions included. Fits 2018-2021 Harley Softail Street Bob and other M8 Softail models with mid controls. $500 + shipping.",
+        img: "https://i.postimg.cc/KjMpWps8/IMG-7298.jpg"
       }
     ];
 
