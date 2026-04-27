@@ -3,198 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#000000">
-  <meta name="description" content="Family-Owned 20+ Years | A+ Rated Financing Available | Large Inventory of Old-School & Harley Davidson Parts">
-  <link rel="apple-touch-icon" href="https://i.postimg.cc/Ff0N2C3j/IMG-7259.png">
-<link rel="icon" href="https://i.postimg.cc/Ff0N2C3j/IMG-7259.png">
-<link rel="icon" href="https://i.postimg.cc/Ff0N2C3j/IMG-7259.png">
-  <title>HD Motors & Garage - Harley Davidson Parts</title>
+  <title>HD Motors & Garage | Harley Parts</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
-      font-family: -apple-system, sans-serif; 
-      background: #0a0a0a; 
-      color: #eee;
-    }
-   .header {
-      background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
-      padding: 24px 20px;
-      text-align: center;
-      border-bottom: 3px solid #ff6b00;
-    }
-   .logo {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 3px solid #ff6b00;
-      margin: 0 auto 12px;
-      object-fit: cover;
-    }
-    h1 { color: #ff6b00; font-size: 26px; font-weight: 800; }
-   .tagline { 
-      color: #999; 
-      font-size: 13px; 
-      margin-top: 8px;
-      line-height: 1.4;
-    }
-   .badge {
-      display: inline-block;
-      background: #ff6b00;
-      color: #000;
-      padding: 4px 12px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 700;
-      margin-top: 8px;
-    }
-   .cta-bar {
-      background: #ff6b00;
-      padding: 12px;
-      text-align: center;
-      color: #000;
-      font-weight: 700;
-      font-size: 15px;
-    }
-   .filters {
-      padding: 16px;
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      background: #1a1a1a;
-    }
-   .filter-btn {
-      padding: 8px 16px;
-      background: #333;
-      border: none;
-      border-radius: 20px;
-      color: #eee;
-      white-space: nowrap;
-      cursor: pointer;
-      font-size: 14px;
-    }
-   .filter-btn.active { background: #ff6b00; color: #000; }
-   .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 16px;
-      padding: 16px;
-    }
-   .part {
-      background: #1a1a1a;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #333;
-    }
-   .part img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      background: #222;
-    }
-   .part-info { padding: 12px; }
-   .part-name { font-size: 14px; margin-bottom: 4px; font-weight: 600; }
-   .part-price { color: #ff6b00; font-weight: 800; font-size: 18px; }
-   .part-cat { color: #666; font-size: 12px; margin: 4px 0; }
-   .order-btn {
-      width: 100%;
-      padding: 10px;
-      background: #ff6b00;
-      border: none;
-      color: #000;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 8px;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-   .footer {
-      text-align: center;
-      padding: 30px 20px;
-      background: #000;
-      color: #666;
-      font-size: 14px;
-      line-height: 1.8;
-      margin-top: 20px;
-    }
-   .footer strong { color: #ff6b00; }
+    :root { --orange: #ff6600; --black: #111; --dark: #1a1a1a; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+    body { background: var(--black); color: #fff; }
+    header { background: #000; padding: 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid var(--orange); }
+    .logo { height: 50px; }
+    .hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover; padding: 100px 20px; text-align: center; }
+    .hero h1 { font-size: 3rem; color: var(--orange); text-shadow: 2px 2px 4px #000; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+    .parts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
+    .part-card { background: var(--dark); border: 1px solid #333; border-radius: 8px; overflow: hidden; transition: transform 0.3s; }
+    .part-card:hover { transform: translateY(-5px); border-color: var(--orange); }
+    .part-img { width: 100%; height: 250px; object-fit: cover; }
+    .part-info { padding: 20px; }
+    .part-price { color: var(--orange); font-size: 1.5rem; font-weight: bold; margin: 10px 0; }
+    .btn { display: inline-block; background: var(--orange); color: #000; padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 5px; margin-top: 10px; }
+    .filters { display: flex; gap: 15px; flex-wrap: wrap; margin: 20px 0; }
+    .filters select { padding: 10px; background: var(--dark); color: #fff; border: 1px solid #333; border-radius: 5px; }
+    footer { background: #000; text-align: center; padding: 30px; margin-top: 60px; border-top: 3px solid var(--orange); }
+    @media (max-width: 768px) { .hero h1 { font-size: 2rem; } }
   </style>
 </head>
 <body>
-  <div class="header">
-    <header>
-  <img src="https://i.ibb.co/6RX5qz3/hd-motors-logo.png" alt="HD Motors & Garage" class="logo">
-  <h1>HD MOTORS & GARAGE</h1>
-</header>
-    <div class="tagline">
-      🏍️ Family-Owned 20+ Years | A+ Rated Financing<br>
-      Large Inventory of Old-School & Harley Davidson Parts
+  <header>
+    <img src="https://i.ibb.co/6RX5qz3/hd-motors-logo.png" alt="HD Motors & Garage" class="logo">
+    <nav>
+      <a href="https://www.ebay.com/str/hdmotorsandgarage" class="btn" target="_blank">Visit eBay Store</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>HD MOTORS & GARAGE</h1>
+    <p>Performance Harley Parts & Accessories</p>
+  </section>
+
+  <div class="container">
+    <h2>Featured Parts</h2>
+    <div class="filters">
+      <select id="category-filter">
+        <option value="all">All Categories</option>
+        <option value="Engine">Engine</option>
+        <option value="Brakes">Brakes</option>
+        <option value="Exhaust">Exhaust</option>
+        <option value="Accessories">Accessories</option>
+      </select>
     </div>
-    <div class="badge">NATIONWIDE SHIPPING</div>
+    <div class="parts-grid" id="parts-grid"></div>
   </div>
 
-  <div class="cta-bar">
-    📦 All Credit Types Accepted | Financing Available
-  </div>
+  <footer>
+    <p>&copy; 2026 HD Motors & Garage | Texas, USA</p>
+    <p><a href="mailto:hdmotorsgarage@gmail.com" style="color:var(--orange)">hdmotorsgarage@gmail.com</a></p>
+  </footer>
 
-  <div class="filters">
-    <button class="filter-btn active" onclick="filter('all')">All Parts</button>
-    <button class="filter-btn" onclick="filter('engine')">Engine</button>
-    <button class="filter-btn" onclick="filter('brakes')">Brakes</button>
-    <button class="filter-btn" onclick="filter('exhaust')">Exhaust</button>
-    <button class="filter-btn" onclick="filter('chrome')">Chrome</button>
-  </div>
+  <script>
+    const parts = [
+      {
+        id: 1,
+        name: "CVO 110 Screamin Eagle Twin Cam Engine - 0 Miles",
+        price: 2200,
+        category: "Engine",
+        fitment: "Touring/Dyna/Softail Twin Cam models",
+        desc: "BRAND NEW 110\" CVO Screamin Eagle Twin Cam. Dealer take-off with 0 MILES on odometer. Removed for larger crate engine swap. Includes what you see. $2200 shipped.",
+        img: "https://i.postimg.cc/FsNW7KBV/IMG-7267.jpg"
+      },
+      {id: 2, name: "Brake Pads Front", price: 65, category: "Brakes", fitment: "Most Harley models", desc: "High performance brake pads.", img: "https://via.placeholder.com/300x300/222/666?text=Brake+Pads"},
+      {id: 3, name: "Vance & Hines Exhaust", price: 400, category: "Exhaust", fitment: "Touring models", desc: "Slip-on mufflers with deep tone.", img: "https://via.placeholder.com/300x300/222/666?text=Exhaust"}
+    ];
 
-  <div class="grid" id="parts"></div>
+    function renderParts(filter = 'all') {
+      const grid = document.getElementById('parts-grid');
+      grid.innerHTML = '';
+      const filtered = filter === 'all' ? parts : parts.filter(p => p.category === filter);
+      filtered.forEach(part => {
+        grid.innerHTML += `
+          <div class="part-card">
+            <img src="${part.img}" alt="${part.name}" class="part-img">
+            <div class="part-info">
+              <h3>${part.name}</h3>
+              <p>${part.fitment}</p>
+              <p>${part.desc}</p>
+              <div class="part-price">$${part.price}</div>
+              <a href="mailto:hdmotorsgarage@gmail.com?subject=Inquiry: ${part.name}" class="btn">Contact to Buy</a>
+            </div>
+          </div>
+        `;
+      });
+    }
 
-  <div class="footer">
-    <strong>HD Motors & Garage</strong><br>
-    Indianapolis, Indiana<br>
-    📧 Email: jaysgarage247@gmail.com<br>
-    📘 Facebook: HD Motors & Garage<br>
-    ⚡ Fast Nationwide Shipping
-  </div>
+    document.getElementById('category-filter').addEventListener('change', (e) => {
+      renderParts(e.target.value);
+    });
 
-<script>
-// EDIT YOUR PARTS HERE - ADD/REMOVE AS NEEDED
-const parts = [
-  {name: "Sportster Air Filter", price: 89, cat: "engine", img: "https://via.placeholder.com/300x300/222/666?text=Air+Filter"},
-  {name: "Brake Pads Front", price: 65, cat: "brakes", img: "https://via.placeholder.com/300x300/222/666?text=Brake+Pads"},
-  {name: "Vance & Hines Exhaust", price: 499, cat: "exhaust", img: "https://via.placeholder.com/300x300/222/666?text=Exhaust"},
-  {name: "Chrome Mirror Set", price: 120, cat: "chrome", img: "https://via.placeholder.com/300x300/222/666?text=Mirrors"},
-];
-
-const email = "jaysgarage247@gmail.com";
-
-function render(list = parts) {
-  document.getElementById('parts').innerHTML = list.map(p => `
-    <div class="part">
-      <img src="${p.img}" alt="${p.name}">
-      <div class="part-info">
-        <div class="part-name">${p.name}</div>
-        <div class="part-cat">${p.cat}</div>
-        <div class="part-price">$${p.price}</div>
-        <button class="order-btn" onclick="order('${p.name}', ${p.price})">
-          📧 Email to Order
-        </button>
-      </div>
-    </div>
-  `).join('');
-}
-
-function filter(cat) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-  render(cat === 'all'? parts : parts.filter(p => p.cat === cat));
-}
-
-function order(name, price) {
-  const subject = `Order Inquiry: ${name}`;
-  const body = `Hi HD Motors & Garage,%0D%0A%0D%0AI'm interested in ordering:%0D%0A${name} - $${price}%0D%0A%0D%0AIs this part still available? What's the shipping cost to my location?%0D%0A%0D%0AThanks`;
-  window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${body}`;
-}
-
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
-render();
-</script>
+    renderParts();
+  </script>
 </body>
 </html>
