@@ -3,63 +3,346 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jays HD Motors Garage - Harley Davidson Parts Texas</title>
+  <title>HD Motors & Garage | Harley Parts</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #111; color: #fff; }
-    .container { max-width: 800px; margin: 0 auto; }
-    h1 { text-align: center; color: #ff4500; }
-    .intro { text-align: center; margin-bottom: 30px; }
-    .product-card { background: #222; border: 1px solid #444; border-radius: 10px; padding: 15px; margin-bottom: 20px; }
-    .product-card img { width: 100%; border-radius: 8px; margin-bottom: 10px; }
-    .product-card h3 { margin: 10px 0 5px 0; color: #ff4500; }
-    .price { font-size: 20px; font-weight: bold; color: #0f0; }
-    .contact { background: #ff4500; padding: 20px; border-radius: 10px; text-align: center; margin-top: 30px; }
-    .contact a { color: #fff; font-weight: bold; text-decoration: none; }
+    :root { --orange: #ff6600; --black: #111; --dark: #1a1a1a; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: var(--black); color: #fff; }
+    header { background: #000; padding: 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid var(--orange); }
+    .logo { height: 50px; }
+    .hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover; padding: 100px 20px; text-align: center; }
+    .hero h1 { font-size: 3rem; color: var(--orange); text-shadow: 2px 2px 4px #000; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+    .parts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
+    .part-card { background: var(--dark); border: 1px solid #333; border-radius: 8px; overflow: hidden; transition: transform 0.3s; }
+    .part-card:hover { transform: translateY(-5px); border-color: var(--orange); }
+    .part-img { width: 100%; height: 250px; object-fit: cover; }
+    .part-info { padding: 20px; }
+    .part-price { color: var(--orange); font-size: 1.5rem; font-weight: bold; margin: 10px 0; }
+    .btn { display: inline-block; background: var(--orange); color: #000; padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 5px; margin-top: 10px; }
+    .payment-box { background: #222; border: 1px solid var(--orange); border-radius: 8px; padding: 20px; margin: 40px 0; }
+    .payment-box h3 { color: var(--orange); margin-bottom: 15px; }
+    .payment-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .payment-item { background: #333; padding: 8px 15px; border-radius: 5px; font-size: 0.9rem; }
+    .crypto { background: #f7931a; color: #000; font-weight: bold; }
+    .filters { display: flex; gap: 15px; flex-wrap: wrap; margin: 20px 0; }
+    .filters select { padding: 10px; background: var(--dark); color: #fff; border: 1px solid #333; border-radius: 5px; }
+    .warehouse { background: var(--dark); border: 2px solid var(--orange); border-radius: 8px; padding: 40px; margin: 60px 0; text-align: center; }
+    .warehouse-img { width: 100%; max-width: 900px; border-radius: 8px; margin: 20px auto; display: block; }
+    .warehouse h2 { color: var(--orange); font-size: 2rem; margin-bottom: 15px; }
+    footer { background: #000; text-align: center; padding: 30px; margin-top: 60px; border-top: 3px solid var(--orange); }
+    @media (max-width: 768px) { .hero h1 { font-size: 2rem; } .warehouse h2 { font-size: 1.5rem; } }
   </style>
 </head>
 <body>
+  <header>
+    <img src="https://i.ibb.co/6RX5qz3/hd-motors-logo.png" alt="HD Motors & Garage" class="logo">
+    <nav>
+      <a href="mailto:jaysgarage247@gmail.com" class="btn">Contact Us</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>HD MOTORS & GARAGE</h1>
+    <p>Performance Harley Parts & Accessories</p>
+  </section>
+
   <div class="container">
-    <h1>JAYS HD MOTORS GARAGE</h1>
-    <div class="intro">
-      <p><strong>$20K+ Harley-Davidson Parts Inventory | Ships from Texas</strong></p>
-      <p>2014-2024 Touring, Softail, Dyna Parts. Tanks, Fenders, Bags, Wheels, Engines.</p>
-      <p>PayPal Goods & Services or Bitcoin Accepted</p>
+    <h2>Featured Parts</h2>
+    <div class="filters">
+      <select id="category-filter">
+        <option value="all">All Categories</option>
+        <option value="Engine">Engine</option>
+        <option value="Exhaust">Exhaust</option>
+        <option value="Suspension">Suspension</option>
+        <option value="Controls">Controls</option>
+        <option value="Wheels">Wheels</option>
+        <option value="Seats">Seats</option>
+        <option value="Handlebars">Handlebars</option>
+        <option value="Tanks">Tanks</option>
+        <option value="Luggage">Luggage</option>
+        <option value="Body">Body</option>
+      </select>
+    </div>
+    <div class="parts-grid" id="parts-grid"></div>
+
+    <div class="payment-box">
+      <h3>Payment Methods Accepted</h3>
+      <div class="payment-list">
+        <span class="payment-item crypto">Bitcoin - BTC</span>
+        <span class="payment-item">Apple Pay</span>
+        <span class="payment-item">Bank Transfer</span>
+        <span class="payment-item">Chime</span>
+        <span class="payment-item">Pay ID</span>
+        <span class="payment-item">PayPal</span>
+        <span class="payment-item">Venmo</span>
+        <span class="payment-item">Cash App</span>
+        <span class="payment-item">Zelle</span>
+        <span class="payment-item">Cash - Local Pickup</span>
+      </div>
+      <p style="margin-top: 15px; font-size: 0.9rem;">50% deposit required to hold items over $500. Email for crypto wallet address. All sales final.</p>
     </div>
 
-    <!-- NEW SADDLEBAGS -->
-    <div class="product-card">
-      <img src="https://i.postimg.cc/T1jZ7746/IMG-7319.jpg" alt="Harley Davidson OEM Saddlebags 2014+ Touring Vivid Black">
-      <h3>2014+ H.D. OEM Touring Saddlebags - Vivid Black</h3>
-      <p class="price">$400</p>
-      <p>No dings, scrapes, or scratches. Complete with all hardware, latches, locks, and keys. Fits Touring models 2014 and up - Street Glide, Road Glide, Ultra.</p>
-    </div>
-
-    <!-- COPY/PASTE MORE PRODUCTS BELOW -->
-    <div class="product-card">
-      <h3>21" Front Wheel - Chrome</h3>
-      <p class="price">$450</p>
-      <p>Fits 2008+ Touring. Clean, no curb rash.</p>
-    </div>
-
-    <div class="product-card">
-      <h3>Street Glide Stretched Tank</h3>
-      <p class="price">$400</p>
-      <p>Vivid Black. Fits 2009-2023. No dents.</p>
-    </div>
-
-    <div class="product-card">
-      <h3>Add More Parts Here</h3>
-      <p class="price">$XXX</p>
-      <p>Copy this whole product-card block and change the details.</p>
-    </div>
-
-    <div class="contact">
-      <h2>TO ORDER</h2>
-      <p><strong>Email:</strong> <a href="mailto:jaysgarage247@gmail.com">jaysgarage247@gmail.com</a></p>
-      <p><strong>Put the part name in your email subject</strong></p>
-      <p>Ships from Texas | PayPal G&S or Bitcoin</p>
-    </div>
-
+    <section class="warehouse">
+      <h2>Hello Riders 🏍️</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 20px;">We've got plenty of aftermarket Harley Davidson parts available for sale.</p>
+      <img src="https://i.postimg.cc/SKPwt9N8/IMG-7299.jpg" alt="HD Motors Warehouse Inventory" class="warehouse-img">
+      <p style="font-size: 1.1rem; margin: 20px 0;">Tanks, fenders, saddlebags, fairings, tour packs, seats, bars, and more. OEM and aftermarket.</p>
+      <p style="font-size: 1.3rem; color: var(--orange); font-weight: bold;">Don't see what you need? Message us directly.</p>
+      <a href="mailto:jaysgarage247@gmail.com?subject=Parts Inquiry" class="btn" style="margin-top: 20px;">Contact Us Now</a>
+    </section>
   </div>
+
+  <footer>
+    <p>&copy; 2026 HD Motors & Garage | Texas, USA</p>
+    <p><a href="mailto:jaysgarage247@gmail.com" style="color:var(--orange)">jaysgarage247@gmail.com</a></p>
+  </footer>
+
+  <script>
+    const parts = [
+      {
+        id: 1,
+        name: "CVO 110 Screamin Eagle Twin Cam Engine - 0 Miles",
+        price: 2200,
+        category: "Engine",
+        fitment: "Touring/Dyna/Softail Twin Cam models",
+        desc: "BRAND NEW 110\" CVO Screamin Eagle Twin Cam. Dealer take-off with 0 MILES on odometer. Removed for larger crate engine swap. Includes what you see. $2200 + shipping. Contact for exact quote.",
+        img: "https://i.postimg.cc/FsNW7KBV/IMG-7267.jpg"
+      },
+      {
+        id: 2,
+        name: "Vance & Hines High Output Exhaust w/ Heat Shields",
+        price: 450,
+        category: "Exhaust",
+        fitment: "2023 Road Glide ST / M8 Touring models",
+        desc: "Vance & Hines High Output 2-into-1 exhaust with heat shields. Only 2500 miles. Pulled from 2023 Road Glide ST. Black finish. Includes pipe and heat shields. $450 + shipping.",
+        img: "https://i.postimg.cc/V6Yh2Bb3/IMG-7234.jpg"
+      },
+      {
+        id: 3,
+        name: "Ohlins HD779 Rear Shocks - Brand New",
+        price: 700,
+        category: "Suspension",
+        fitment: "2014-2026 Harley Touring models",
+        desc: "Brand new Ohlins HD779 rear shocks. Never installed, still in box. Includes remote reservoirs and mounting hardware shown. Fits 2014-2026 Touring. $700 + shipping.",
+        img: "https://i.postimg.cc/0NnB7WtK/IMG-7279.jpg"
+      },
+      {
+        id: 4,
+        name: "Flo Motorsports V5 Bagger Floorboards + Brake Kit",
+        price: 250,
+        category: "Controls",
+        fitment: "1984-2026 Harley Touring models",
+        desc: "Set of Flo Motorsports V5 Bagger floorboards in black. Includes adjustable brake arm and matching peg. Very good condition, no scrapes at all. Fits 84-25 Touring. $250 + shipping for complete set.",
+        img: "https://i.postimg.cc/sf9Tt0PF/IMG-7281.jpg"
+      },
+      {
+        id: 5,
+        name: "OEM Harley Prodigy Wheel Set - 2020 Road Glide Special",
+        price: 1500,
+        category: "Wheels",
+        fitment: "2017-2026 Harley Touring models",
+        desc: "OEM Harley Prodigy wheels off 2020 Road Glide Special. 19x3.50 front with NEW Shinko 777 130/60/19. 18x5.00 cush drive rear with Shinko 999 180/55/18 - tire is bald. Wheels in excellent condition. $1500 + shipping.",
+        img: "https://i.postimg.cc/XYwq8dST/IMG-7282.jpg"
+      },
+      {
+        id: 6,
+        name: "Custom Touring Seat - Marine Suede Diamond Stitch",
+        price: 400,
+        category: "Seats",
+        fitment: "2009-2023 Harley Touring models",
+        desc: "Brand new custom seat. Re-trimmed in black marine grade suede - UV stabilized, water resistant. Blacked out badge, custom embroidered pillion, white double diamond stitched fade-out insert. Never been sat on. Fits 2009-2023 Touring. $400 + shipping. Core exchange available.",
+        img: "https://i.postimg.cc/XJTXL8JH/IMG-7283.jpg"
+      },
+      {
+        id: 7,
+        name: "1977 XLCR 7-Spoke Morris Mag Wheels - Restored 3-Disc Set",
+        price: 700,
+        category: "Wheels",
+        fitment: "1977 Harley XLCR Cafe Racer - One Year Only OEM",
+        desc: "Rare OEM 1977 XLCR 7-spoke Morris Mag 3-disc wheels. Used on all 1977 Harley Factory XLCR Cafe Racers. Restored to factory condition. Comes with all needed hardware. Probably the best restored set available. $700 + shipping.",
+        img: "https://i.postimg.cc/GmJgvLzC/IMG-7284.jpg"
+      },
+      {
+        id: 8,
+        name: "KST Pathfinder 16\" Apes + LA Choppers Riser + HD Grips",
+        price: 500,
+        category: "Handlebars",
+        fitment: "Road King, Road Glide, Softail models",
+        desc: "KST Pathfinder 16 inch fully adjustable ape hangers. Includes LA Choppers riser with built-in set screws and Harley Davidson grips. Only 7 months old. Fits Road King, Road Glide, Softail. $500 + shipping for complete setup.",
+        img: "https://i.postimg.cc/xdBs2X18/IMG-7285.jpg"
+      },
+      {
+        id: 9,
+        name: "Bassani Mid Length 2-1 Super Bike Exhaust - M8 Bagger",
+        price: 500,
+        category: "Exhaust",
+        fitment: "2017-Up Harley Touring Bagger models",
+        desc: "Bassani Mid Length 2-into-1 Super Bike exhaust system. Stainless finish. Includes mounting bracket and hardware shown. Fits 2017-Up M8 Baggers. Deep, aggressive sound. $500 + shipping.",
+        img: "https://i.postimg.cc/mgHznkKZ/IMG-7286.jpg"
+      },
+      {
+        id: 10,
+        name: "Matte Black Enforcer Wheels + Pulley - Touring",
+        price: 600,
+        category: "Wheels",
+        fitment: "2009-Up Harley Touring models",
+        desc: "Matte black Enforcer wheels with matching pulley. 19\" front / 18\" rear. Clean finish, ready to bolt on. Fits 2009-Up Touring models and other HD models with proper adapters. $600 + shipping.",
+        img: "https://i.postimg.cc/vZsgpbys/IMG-7287.jpg"
+      },
+      {
+        id: 11,
+        name: "Vivid Black Fatboy Tank - 08-17 - No Pump",
+        price: 300,
+        category: "Tanks",
+        fitment: "2008-2017 Harley Fatboy models",
+        desc: "Vivid Black fuel tank with red lettering for 08-17 Fatboy. Does NOT include fuel pump. Needs a good clean out inside. Great condition externally or use as shed ornament. $300 + shipping.",
+        img: "https://i.postimg.cc/x13RZ6Wx/IMG-7288.jpg"
+      },
+      {
+        id: 12,
+        name: "Advanblack King Tour Pack - Billiard Gray Loaded",
+        price: 500,
+        category: "Luggage",
+        fitment: "2014-2023 Harley Touring models",
+        desc: "Advanblack King Tour Pack in Billiard Gray with black leather wrap-around backrest. Built-in speaker pods, full interior carpet liner, rear LED light bar with wiring harnesses. Chrome latch and lock set installed. Excellent condition. $500 + shipping.",
+        img: "https://i.postimg.cc/0Nm8xJ0B/IMG-7289.jpg"
+      },
+      {
+        id: 13,
+        name: "OVER Racing SS11 Rearsets - Buell S1/X1/Sportster",
+        price: 437,
+        category: "Controls",
+        fitment: "1999 Buell S1 Lightning, X1, M2, S3 / XL883, XL1200 Sportster",
+        desc: "Rare OVER Racing Japan SS11 aftermarket rearsets for Buell S1 Lightning 1999. Billet aluminum with adjustable pegs. Includes shift linkage, brake lever, and mounting hardware shown. Also fits Buell X1, M2, S3 and Sportster XL883/XL1200 with adapters. $437 + shipping.",
+        img: "https://i.postimg.cc/KvrpXcTP/IMG-7290.jpg"
+      },
+      {
+        id: 14,
+        name: "Rebuilt 103\" Twin Cam A - S&S 570 / Wiseco / Trued Crank",
+        price: 5340,
+        category: "Engine",
+        fitment: "1999-2006 Harley Twin Cam A Touring/Dyna/Softail",
+        desc: "Fully rebuilt 103\" Twin Cam A engine with new powder coat. Head work: AV&V springs, .025\" over valves, guides replaced. S&S 570 cams, cam bearings, lifters. Wiseco Hi-Performance forged piston kit. 96\" jugs bored to 103\" specs. Crank trued and welded. Case had only 14,000 kms. Engine stand included. $5340 + shipping.",
+        img: "https://i.postimg.cc/269m7FkH/IMG-7291.jpg"
+      },
+      {
+        id: 15,
+        name: "FXLRS Front Fork Set - 49mm Dual Disc - M8 Softail",
+        price: 540,
+        category: "Suspension",
+        fitment: "2018-2024 Harley Softail Low Rider S / M8 Softail",
+        desc: "OEM Harley FXLRS Low Rider S front fork assembly. 49mm Showa dual-disc forks with triple trees and hardware shown. Fits 2018-2024 M8 Softail models. Clean take-off condition. $540 + shipping.",
+        img: "https://i.postimg.cc/wx5nzk8f/IMG-7292.jpg"
+      },
+      {
+        id: 16,
+        name: "Bassani Stainless 2-1 Super Bike Shorty - M8 Softail",
+        price: 400,
+        category: "Exhaust",
+        fitment: "2018-Up Harley M8 Softail: Low Rider S, Street Bob, Fat Bob",
+        desc: "Bassani Stainless Steel 2-into-1 Super Bike muffler - short/slim version. Raw stainless finish. Great condition, ready to install. Fits 2018-Up M8 Softails: Low Rider, Low Rider S, Street Bob, Fat Bob. Aggressive sound, weight savings. $400 + shipping.",
+        img: "https://i.postimg.cc/3NSM2ghh/IMG-7293.jpg"
+      },
+      {
+        id: 17,
+        name: "Complete Paint Set - 14-23 Ultra Classic - Superior Blue",
+        price: 2200,
+        category: "Body",
+        fitment: "2014-2023 Harley Davidson Ultra Classic FLHTCU",
+        desc: "Complete OEM paint set in Superior Blue. Includes: fuel tank, front fender, rear fender, saddlebags with lids, side covers, inner/outer fairing, and tour pack with luggage rack. Fits 2014-2023 Ultra Classic. Great condition overall. $2200 + shipping for all.",
+        img: "https://i.postimg.cc/V6FW0Btc/IMG-7295.jpg"
+      },
+      {
+        id: 18,
+        name: "Detachable Sissy Bar Backrest - 09+ Touring - Your Choice",
+        price: 200,
+        category: "Seats",
+        fitment: "2009-2026 Harley Touring models: Street Glide, Road Glide, Road King, Electra Glide",
+        desc: "Aftermarket detachable sissy bar backrests with mounting brackets. Multiple styles available: standard height, tall, with/without luggage rack. Fits 2009-Up Touring models with 4-point docking hardware. Your choice from inventory shown. $200 each + shipping.",
+        img: "https://i.postimg.cc/sXJtcN8T/IMG-7296.jpg"
+      },
+      {
+        id: 19,
+        name: "Vance & Hines Big Radius 2-2 Chrome - M8 Softail - NEW",
+        price: 500,
+        category: "Exhaust",
+        fitment: "2018-2021 Harley Softail Street Bob FXBB / 2018+ M8 Softail",
+        desc: "Genuine Vance & Hines Big Radius 2-into-2 exhaust system. Part #26077. Unused complete kit in original condition. Chrome finish with full mounting bracket, hardware, clamps, and instructions included. Fits 2018-2021 Harley Softail Street Bob and other M8 Softail models with mid controls. $500 + shipping.",
+        img: "https://i.postimg.cc/KjMpWps8/IMG-7298.jpg"
+      },
+      {
+        id: 20,
+        name: "2007 CVO Ultra Tank - Scarlet Red/Pewter Silver",
+        price: 550,
+        category: "Tanks",
+        fitment: "1997-2007 Harley Touring CVO Ultra Classic FLHTCUSE",
+        desc: "OEM Harley CVO tank in Scarlet Red & Pewter Silver two-tone. Fits 2007 CVO Ultra Classic and 97-07 Touring models. Tank badges intact, no dents. Clean inside. One-year-only CVO color. Does not include fuel pump or cap. $550 + shipping.",
+        img: "https://i.postimg.cc/SKPwt9N8/IMG-7299.jpg"
+      },
+      {
+        id: 21,
+        name: "Vivid Black Stretched Saddlebags - 14-23 Touring",
+        price: 400,
+        category: "Body",
+        fitment: "2014-2023 Harley Touring: Street Glide, Road Glide, Road King",
+        desc: "OEM-style Vivid Black stretched saddlebags for 2014-2023 Touring models. 4\" stretch, clean OEM paint. Includes lids and hardware shown. No speakers or lights. Direct bolt-on for Street Glide, Road Glide, Road King. $400 + shipping for the pair.",
+        img: "https://i.postimg.cc/SKPwt9N8/IMG-7299.jpg"
+      },
+      {
+        id: 22,
+        name: "21\" Wheel Wrap Front Fender - White Primer - 14+ Touring",
+        price: 300,
+        category: "Body",
+        fitment: "2014-2026 Harley Touring: Street Glide, Road Glide, Road King",
+        desc: "Aftermarket 21\" wheel wrap front fender in white primer. Fits 2014+ Touring models running 21\" or 23\" front wheels. Smooth finish, ready for paint. Includes mounting hardware. Perfect for big wheel bagger builds. $300 + shipping.",
+        img: "https://i.postimg.cc/SKPwt9N8/IMG-7299.jpg"
+      },
+      {
+        id: 23,
+        name: "OEM Front Fender - Superior Blue/Silver - 14-23 Touring",
+        price: 350,
+        category: "Body",
+        fitment: "2014-2023 Harley Touring: Ultra Limited, Street Glide Special",
+        desc: "OEM Harley front fender in Superior Blue with Silver Fortune accent. Fits 2014-2023 Touring models. Clean factory paint, no dents or chips. Direct bolt-on for Ultra Limited, Street Glide Special, Road Glide Special. $350 + shipping.",
+        img: "https://i.postimg.cc/SKPwt9N8/IMG-7299.jpg"
+      },
+      {
+        id: 24,
+        name: "OEM Rear Fender w/ Chrome Fascia - Vivid Black - 14-23 Touring",
+        price: 250,
+        category: "Body",
+        fitment: "2014-2023 Harley Touring: Street Glide, Road Glide, Road King",
+        desc: "OEM Harley rear fender in Vivid Black with chrome fascia strip. Fits 2014-2023 Touring models. Clean factory paint, no dents. Includes fascia and LED tri-bar. Direct bolt-on for Street Glide, Road Glide, Road King. $250 + shipping.",
+        img: "https://i.postimg.cc/SKPwt9N8/IMG-7299.jpg"
+      }
+    ];
+
+    function renderParts(filter = 'all') {
+      const grid = document.getElementById('parts-grid');
+      grid.innerHTML = '';
+      const filtered = filter === 'all' ? parts : parts.filter(p => p.category === filter);
+      filtered.forEach(part => {
+        grid.innerHTML += `
+          <div class="part-card">
+            <img src="${part.img}" alt="${part.name}" class="part-img">
+            <div class="part-info">
+              <h3>${part.name}</h3>
+              <p>${part.fitment}</p>
+              <p>${part.desc}</p>
+              <div class="part-price">$${part.price} + shipping</div>
+              <a href="mailto:jaysgarage247@gmail.com?subject=Inquiry: ${part.name}" class="btn">Contact to Buy</a>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    document.getElementById('category-filter').addEventListener('change', (e) => {
+      renderParts(e.target.value);
+    });
+
+    renderParts();
+  </script>
 </body>
 </html>
