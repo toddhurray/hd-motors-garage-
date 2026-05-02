@@ -18,8 +18,11 @@
     .part-card:hover { transform: translateY(-5px); border-color: var(--orange); }
     .part-img { width: 100%; height: 250px; object-fit: cover; }
     .part-info { padding: 20px; }
+    .part-name { font-size: 1.1rem; margin-bottom: 8px; min-height: 50px; }
+    .part-fitment { color: #aaa; font-size: 0.9rem; margin-bottom: 8px; }
     .part-price { color: var(--orange); font-size: 1.5rem; font-weight: bold; margin: 10px 0; }
-    .btn { display: inline-block; background: var(--orange); color: #000; padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 5px; margin-top: 10px; }
+    .part-desc { font-size: 0.9rem; color: #ccc; margin-bottom: 15px; }
+    .btn { display: inline-block; background: var(--orange); color: #000; padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 5px; margin-top: 10px; border: none; cursor: pointer; }
     .payment-box { background: #222; border: 1px solid var(--orange); border-radius: 8px; padding: 20px; margin: 40px 0; }
     .payment-box h3 { color: var(--orange); margin-bottom: 15px; }
     .payment-list { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -103,379 +106,46 @@
 
   <script>
     const parts = [
-      {
-        id: 1,
-        name: "CVO 110 Screamin Eagle Twin Cam Engine - 0 Miles",
-        price: 5700,
-        category: "Engine",
-        fitment: "Touring/Dyna/Softail Twin Cam models",
-        desc: "BRAND NEW 110\" CVO Screamin Eagle Twin Cam. Dealer take-off with 0 MILES on odometer. Removed for larger crate engine swap. Includes what you see. $5700 + shipping. Contact for exact quote.",
-        img: "https://i.postimg.cc/FsNW7KBV/IMG-7267.jpg"
-      },
-      {
-        id: 2,
-        name: "Vance & Hines High Output Exhaust w/ Heat Shields",
-        price: 700,
-        category: "Exhaust",
-        fitment: "2023 Road Glide ST / M8 Touring models",
-        desc: "Vance & Hines High Output 2-into-1 exhaust with heat shields. Only 2500 miles. Pulled from 2023 Road Glide ST. Black finish. Includes pipe and heat shields. $700 + shipping.",
-        img: "https://i.postimg.cc/V6Yh2Bb3/IMG-7234.jpg"
-      },
-      {
-        id: 3,
-        name: "Ohlins HD779 Rear Shocks - Brand New",
-        price: 700,
-        category: "Suspension",
-        fitment: "2014-2026 Harley Touring models",
-        desc: "Brand new Ohlins HD779 rear shocks. Never installed, still in box. Includes remote reservoirs and mounting hardware shown. Fits 2014-2026 Touring. $700 + shipping.",
-        img: "https://i.postimg.cc/0NnB7WtK/IMG-7279.jpg"
-      },
-      {
-        id: 4,
-        name: "Flo Motorsports V5 Bagger Floorboards + Brake Kit",
-        price: 250,
-        category: "Controls",
-        fitment: "1984-2026 Harley Touring models",
-        desc: "Set of Flo Motorsports V5 Bagger floorboards in black. Includes adjustable brake arm and matching peg. Very good condition, no scrapes at all. Fits 84-25 Touring. $250 + shipping for complete set.",
-        img: "https://i.postimg.cc/sf9Tt0PF/IMG-7281.jpg"
-      },
-      {
-        id: 5,
-        name: "OEM Harley Prodigy Wheel Set - 2020 Road Glide Special",
-        price: 1500,
-        category: "Wheels",
-        fitment: "2017-2026 Harley Touring models",
-        desc: "OEM Harley Prodigy wheels off 2020 Road Glide Special. 19x3.50 front with NEW Shinko 777 130/60/19. 18x5.00 cush drive rear with Shinko 999 180/55/18 - tire is bald. Wheels in excellent condition. $1500 + shipping.",
-        img: "https://i.postimg.cc/XYwq8dST/IMG-7282.jpg"
-      },
-      {
-        id: 6,
-        name: "Custom Touring Seat - Marine Suede Diamond Stitch",
-        price: 400,
-        category: "Seats",
-        fitment: "2009-2023 Harley Touring models",
-        desc: "Brand new custom seat. Re-trimmed in black marine grade suede - UV stabilized, water resistant. Blacked out badge, custom embroidered pillion, white double diamond stitched fade-out insert. Never been sat on. Fits 2009-2023 Touring. $400 + shipping. Core exchange available.",
-        img: "https://i.postimg.cc/XJTXL8JH/IMG-7283.jpg"
-      },
-      {
-        id: 7,
-        name: "1977 XLCR 7-Spoke Morris Mag Wheels - Restored 3-Disc Set",
-        price: 700,
-        category: "Wheels",
-        fitment: "1977 Harley XLCR Cafe Racer - One Year Only OEM",
-        desc: "Rare OEM 1977 XLCR 7-spoke Morris Mag 3-disc wheels. Used on all 1977 Harley Factory XLCR Cafe Racers. Restored to factory condition. Comes with all needed hardware. Probably the best restored set available. $700 + shipping.",
-        img: "https://i.postimg.cc/GmJgvLzC/IMG-7284.jpg"
-      },
-      {
-        id: 8,
-        name: "KST Pathfinder 16\" Apes + LA Choppers Riser + HD Grips",
-        price: 500,
-        category: "Handlebars",
-        fitment: "Road King, Road Glide, Softail models",
-        desc: "KST Pathfinder 16 inch fully adjustable ape hangers. Includes LA Choppers riser with built-in set screws and Harley Davidson grips. Only 7 months old. Fits Road King, Road Glide, Softail. $500 + shipping for complete setup.",
-        img: "https://i.postimg.cc/xdBs2X18/IMG-7285.jpg"
-      },
-      {
-        id: 9,
-        name: "Bassani Mid Length 2-1 Super Bike Exhaust - M8 Bagger",
-        price: 500,
-        category: "Exhaust",
-        fitment: "2017-Up Harley Touring Bagger models",
-        desc: "Bassani Mid Length 2-into-1 Super Bike exhaust system. Stainless finish. Includes mounting bracket and hardware shown. Fits 2017-Up M8 Baggers. Deep, aggressive sound. $500 + shipping.",
-        img: "https://i.postimg.cc/mgHznkKZ/IMG-7286.jpg"
-      },
-      {
-        id: 10,
-        name: "Matte Black Enforcer Wheels + Pulley - Touring",
-        price: 600,
-        category: "Wheels",
-        fitment: "2009-Up Harley Touring models",
-        desc: "Matte black Enforcer wheels with matching pulley. 19\" front / 18\" rear. Clean finish, ready to bolt on. Fits 2009-Up Touring models and other HD models with proper adapters. $600 + shipping.",
-        img: "https://i.postimg.cc/vZsgpbys/IMG-7287.jpg"
-      },
-      {
-        id: 11,
-        name: "Vivid Black Fatboy Tank - 08-17 - No Pump",
-        price: 300,
-        category: "Tanks",
-        fitment: "2008-2017 Harley Fatboy models",
-        desc: "Vivid Black fuel tank with red lettering for 08-17 Fatboy. Does NOT include fuel pump. Needs a good clean out inside. Great condition externally or use as shed ornament. $300 + shipping.",
-        img: "https://i.postimg.cc/x13RZ6Wx/IMG-7288.jpg"
-      },
-      {
-        id: 12,
-        name: "Advanblack King Tour Pack - Billiard Gray Loaded",
-        price: 500,
-        category: "Luggage",
-        fitment: "2014-2023 Harley Touring models",
-        desc: "Advanblack King Tour Pack in Billiard Gray with black leather wrap-around backrest. Built-in speaker pods, full interior carpet liner, rear LED light bar with wiring harnesses. Chrome latch and lock set installed. Excellent condition. $500 + shipping.",
-        img: "https://i.postimg.cc/0Nm8xJ0B/IMG-7289.jpg"
-      },
-      {
-        id: 13,
-        name: "OVER Racing SS11 Rearsets - Buell S1/X1/Sportster",
-        price: 437,
-        category: "Controls",
-        fitment: "1999 Buell S1 Lightning, X1, M2, S3 / XL883, XL1200 Sportster",
-        desc: "Rare OVER Racing Japan SS11 aftermarket rearsets for Buell S1 Lightning 1999. Billet aluminum with adjustable pegs. Includes shift linkage, brake lever, and mounting hardware shown. Also fits Buell X1, M2, S3 and Sportster XL883/XL1200 with adapters. $437 + shipping.",
-        img: "https://i.postimg.cc/KvrpXcTP/IMG-7290.jpg"
-      },
-      {
-        id: 14,
-        name: "Rebuilt 103\" Twin Cam A - S&S 570 / Wiseco / Trued Crank",
-        price: 5340,
-        category: "Engine",
-        fitment: "1999-2006 Harley Twin Cam A Touring/Dyna/Softail",
-        desc: "Fully rebuilt 103\" Twin Cam A engine with new powder coat. Head work: AV&V springs, .025\" over valves, guides replaced. S&S 570 cams, cam bearings, lifters. Wiseco Hi-Performance forged piston kit. 96\" jugs bored to 103\" specs. Crank trued and welded. Case had only 14,000 kms. Engine stand included. $5340 + shipping.",
-        img: "https://i.postimg.cc/269m7FkH/IMG-7291.jpg"
-      },
-      {
-        id: 15,
-        name: "FXLRS Front Fork Set - 49mm Dual Disc - M8 Softail",
-        price: 540,
-        category: "Suspension",
-        fitment: "2018-2024 Harley Softail Low Rider S / M8 Softail",
-        desc: "OEM Harley FXLRS Low Rider S front fork assembly. 49mm Showa dual-disc forks with triple trees and hardware shown. Fits 2018-2024 M8 Softail models. Clean take-off condition. $540 + shipping.",
-        img: "https://i.postimg.cc/wx5nzk8f/IMG-7292.jpg"
-      },
-      {
-        id: 16,
-        name: "Bassani Stainless 2-1 Super Bike Shorty - M8 Softail",
-        price: 400,
-        category: "Exhaust",
-        fitment: "2018-Up Harley M8 Softail: Low Rider S, Street Bob, Fat Bob",
-        desc: "Bassani Stainless Steel 2-into-1 Super Bike muffler - short/slim version. Raw stainless finish. Great condition, ready to install. Fits 2018-Up M8 Softails: Low Rider, Low Rider S, Street Bob, Fat Bob. Aggressive sound, weight savings. $400 + shipping.",
-        img: "https://i.postimg.cc/3NSM2ghh/IMG-7293.jpg"
-      },
-      {
-        id: 17,
-        name: "Complete Paint Set - 14-23 Ultra Classic - Superior Blue",
-        price: 2200,
-        category: "Body",
-        fitment: "2014-2023 Harley Davidson Ultra Classic FLHTCU",
-        desc: "Complete OEM paint set in Superior Blue. Includes: fuel tank, front fender, rear fender, saddlebags with lids, side covers, inner/outer fairing, and tour pack with luggage rack. Fits 2014-2023 Ultra Classic. Great condition overall. $2200 + shipping for all.",
-        img: "https://i.postimg.cc/V6FW0Btc/IMG-7295.jpg"
-      },
-      {
-        id: 18,
-        name: "Detachable Sissy Bar Backrest - 09+ Touring - Your Choice",
-        price: 200,
-        category: "Seats",
-        fitment: "2009-2026 Harley Touring models: Street Glide, Road Glide, Road King, Electra Glide",
-        desc: "Aftermarket detachable sissy bar backrests with mounting brackets. Multiple styles available: standard height, tall, with/without luggage rack. Fits 2009-Up Touring models with 4-point docking hardware. Your choice from inventory shown. $200 each + shipping.",
-        img: "https://i.postimg.cc/sXJtcN8T/IMG-7296.jpg"
-      },
-      {
-        id: 19,
-        name: "Vance & Hines Big Radius 2-2 Chrome - M8 Softail - NEW",
-        price: 500,
-        category: "Exhaust",
-        fitment: "2018-2021 Harley Softail Street Bob FXBB / 2018+ M8 Softail",
-        desc: "Genuine Vance & Hines Big Radius 2-into-2 exhaust system. Part #26077. Unused complete kit in original condition. Chrome finish with full mounting bracket, hardware, clamps, and instructions included. Fits 2018-2021 Harley Softail Street Bob and other M8 Softail models with mid controls. $500 + shipping.",
-        img: "https://i.postimg.cc/KjMpWps8/IMG-7298.jpg"
-      },
-      {
-        id: 20,
-        name: "2007 CVO Ultra Tank - Scarlet Red/Pewter Silver",
-        price: 550,
-        category: "Tanks",
-        fitment: "1997-2007 Harley Touring CVO Ultra Classic FLHTCUSE",
-        desc: "OEM Harley CVO tank in Scarlet Red & Pewter Silver two-tone. Fits 2007 CVO Ultra Classic and 97-07 Touring models. Tank badges intact, no dents. Clean inside. One-year-only CVO color. Does not include fuel pump or cap. $550 + shipping.",
-        img: "https://i.postimg.cc/SKPwt9N8/IMG-7299.jpg"
-      },
-      {
-        id: 21,
-        name: "Vivid Black Stretched Saddlebags - 14-23 Touring",
-        price: 400,
-        category: "Body",
-        fitment: "2014-2023 Harley Touring: Street Glide, Road Glide, Road King",
-        desc: "OEM-style Vivid Black stretched saddlebags for 2014-2023 Touring models. 4\" stretch, clean OEM paint. Includes lids and hardware shown. No speakers or lights. Direct bolt-on for Street Glide, Road King. $400 + shipping for the pair.",
-        img: "https://i.postimg.cc/SKPwt9N8/IMG-7299.jpg"
-      },
-      {
-        id: 22,
-        name: "21\" Wheel Wrap Front Fender - White Primer - 14+ Touring",
-        price: 300,
-        category: "Body",
-        fitment: "2014-2026 Harley Touring: Street Glide, Road Glide, Road King",
-        desc: "Aftermarket 21\" wheel wrap front fender in white primer. Fits 2014+ Touring models running 21\" or 23\" front wheels. Smooth finish, ready for paint. Includes mounting hardware. Perfect for big wheel bagger builds. $300 + shipping.",
-        img: "https://i.postimg.cc/SKPwt9N8/IMG-7299.jpg"
-      },
-      {
-        id: 23,
-        name: "OEM Front Fender - Superior Blue/Silver - 14-23 Touring",
-        price: 350,
-        category: "Body",
-        fitment: "2014-2023 Harley Touring: Ultra Limited, Street Glide Special",
-        desc: "OEM Harley front fender in Superior Blue with Silver Fortune accent. Fits 2014-2023 Touring models. Clean factory paint, no dents or chips. Direct bolt-on for Ultra Limited, Street Glide Special, Road Glide Special. $350 + shipping.",
-        img: "https://i.postimg.cc/SKPwt9N8/IMG-7299.jpg"
-      },
-      {
-        id: 24,
-        name: "OEM Rear Fender w/ Chrome Fascia - Vivid Black - 14-23 Touring",
-        price: 250,
-        category: "Body",
-        fitment: "2014-2023 Harley Touring: Street Glide, Road Glide, Road King",
-        desc: "OEM Harley rear fender in Vivid Black with chrome fascia strip. Fits 2014-2023 Touring models. Clean factory paint, no dents. Includes fascia and LED tri-bar. Direct bolt-on for Street Glide, Road King. $250 + shipping.",
-        img: "https://i.postimg.cc/SKPwt9N8/IMG-7299.jpg"
-      },
-      {
-        id: 25,
-        name: "Python 2-into-1 Exhaust - Black - Twin Cam Touring",
-        price: 1432,
-        category: "Exhaust",
-        fitment: "1999-2016 Harley Touring: Street Glide, Road Glide, Road King",
-        desc: "Brand new out of box Python 2-into-1 exhaust system. Black finish with slash cut tip. Includes mounting bracket and hardware shown. Fits 1999-2016 Twin Cam Touring models. Aggressive sound, performance gains. $1432 + shipping.",
-        img: "https://i.postimg.cc/XvbL9vx9/IMG-7362.jpg"
-      },
-      {
-        id: 26,
-        name: "NOS OEM FXR Gauge Set - Speedo + Tach - Brand New",
-        price: 412,
-        category: "Gauges",
-        fitment: "1982-1994 Harley FXR models: FXRS, FXRT, FXRP, FXRD",
-        desc: "NOS OEM Harley FXR gauge set. Brand new never used, still in perfect condition. Speedometer 0-120 MPH + Tachometer 0-8000 RPM. Includes mounting bracket. 0 miles on odometer. Fits 1982-1994 FXR models. $412 + shipping.",
-        img: "https://i.postimg.cc/VLNN4yKf/IMG-7367.jpg"
-      },
-      {
-        id: 27,
-        name: "Screamin Eagle 103 Air Cleaner - Oval Chrome/Black",
-        price: 320,
-        category: "Intake",
-        fitment: "2014-2017 Harley Touring 103\" Twin Cam models",
-        desc: "OEM Harley Screamin Eagle 103 air cleaner assembly. Oval chrome cover with black 103 insert. Fits 2014-2017 Touring models with 103\" Twin Cam. Complete with backing plate and mounting hardware shown. $320 + shipping.",
-        img: "https://i.postimg.cc/dtbHsFkC/IMG-7371.jpg"
-      },
-      {
-        id: 28,
-        name: "Complete Road Glide Body Kit - Red/Black Two-Tone - NEW",
-        price: 2531,
-        category: "Body",
-        fitment: "2015-2023 Harley Road Glide FLTRX/FLTRXS models",
-        desc: "Brand new complete Road Glide body kit in Red/Black two-tone. Includes: outer fairing, inner fairing, tank, front fender, rear fender, saddlebags with lids, and tour pack. All pieces painted and ready to install. Fits 2015-2023 Road Glide models. $2531 + shipping for complete set. Will sell pieces individually - email for pricing.",
-        img: "https://i.postimg.cc/ydfsJP2p/IMG-7376.jpg"
-      },
-      {
-        id: 29,
-        name: "Stretched Saddlebags w/ Speaker Lids - Billiard Red - 14-25 Touring",
-        price: 519,
-        category: "Luggage",
-        fitment: "2014-2025 Harley Touring: Street Glide, Road Glide, Road King, Ultra",
-        desc: "Stretched saddlebags with speaker lids in beautiful Billiard Red. Includes hardware, locks, and keys. Speaker lids ready for 6x9s. Fits 2014-2025 Touring models. Clean paint, no scratches. $519 + shipping for the pair.",
-        img: "https://i.postimg.cc/qRVgRGh9/IMG-7386.jpg"
-      },
-      {
-        id: 30,
-        name: "Saddlemen RoadSofa™ Touring Seat - Diamond Stitch - Black/Gold",
-        price: 678,
-        category: "Seats",
-        fitment: "2008-2025 Harley Touring: Street Glide, Road Glide, Road King, Ultra",
-        desc: "Saddlemen RoadSofa™ touring seat with rider backrest. Black vinyl with gold diamond stitching. Comfort that hits different + style that matches your build. Tons of stitch color options available - email to customize. Fits 2008-2025 Touring bagger models. $678 + shipping.",
-        img: "https://i.postimg.cc/L63HBpq0/IMG-7392.jpg"
-      },
-      {
-        id: 31,
-        name: "Saddlemen RoadSofa LS Seat w/ Backrest - Honeycomb Stitch - Black",
-        price: 351,
-        category: "Seats",
-        fitment: "2008-2025 Harley Touring: Street Glide, Road Glide, Road King, Ultra",
-        desc: "Saddlemen RoadSofa LS touring seat with adjustable rider backrest. Black vinyl with honeycomb diamond stitch pattern. Deep comfort foam + GelCore technology. Fits 2008-2025 Touring bagger models. $351 + shipping.",
-        img: "https://i.postimg.cc/FHfhtJCX/IMG-7399.jpg"
-      },
-      {
-        id: 32,
-        name: "NOS OEM Touring Tank - Diamond Ice Sinister Blue Pearl - NEW",
-        price: 498,
-        category: "Tanks",
-        fitment: "2008-2023 Harley Touring: Street Glide, Road Glide, Road King, Ultra",
-        desc: "NOS OEM Harley touring fuel tank in Diamond Ice Sinister Blue Pearl. Brand new, never mounted. Factory CVO color. Includes mounting tabs shown. Does NOT include fuel pump or cap. Fits 2008-2023 Touring models with 6-gallon tank. $498 + shipping.",
-        img: "https://i.postimg.cc/Px6tszHP/IMG-7403.jpg"
-      },
-      {
-        id: 33,
-        name: "OEM Saddlebag Speaker Lids - Reef Blue - 14-25 Road King",
-        price: 215,
-        category: "Luggage",
-        fitment: "2014-2025 Harley Touring: Road King, Street Glide, Road Glide",
-        desc: "OEM Harley saddlebag speaker lids in Reef Blue. Includes speaker grills shown. Ready for 6x9 speakers. Fits 2014-2025 Touring saddlebags. Clean factory paint, no scratches. $215 + shipping for the pair.",
-        img: "https://i.postimg.cc/3N5HHLqs/IMG-7407.jpg"
-      },
-      {
-        id: 34,
-        name: "Legend Aero Air Ride Suspension - EVO Touring - NEW",
-        price: 1435,
-        category: "Suspension",
-        fitment: "1984-1999 Harley EVO Touring: Electra Glide, Road King, Ultra Classic",
-        desc: "Legend Aero air ride suspension system. New in box. Complete kit with shocks, compressor, wiring, and hardware shown. Fits 1984-1999 EVO Touring models. Drop your bagger on command. $1435 + shipping.",
-        img: "https://i.postimg.cc/SQ3nnk0s/IMG-7409.jpg"
-      },
-      {
-        id: 35,
-        name: "Custom Molded Speaker Lids - Vivid Black - Road Glide - Loaded",
-        price: 215,
-        category: "Luggage",
-        fitment: "2014-2025 Harley Touring: Road Glide, Street Glide, Road King",
-        desc: "Hand molded custom speaker lids in Vivid Black. Loaded with Rockford Fosgate speakers and grills. Came off Road Glide. Fits 2014-2025 Touring saddlebags. Ready to wire and run. $215 + shipping for the pair with speakers.",
-        img: "https://i.postimg.cc/6qXQtV1J/IMG-7412.jpg"
-      },
-      {
-        id: 36,
-        name: "Kraus Dynamoto SP Inverted Front End Kit - Dyna - NEW",
-        price: 2489,
-        category: "Suspension",
-        fitment: "1991-2017 Harley Dyna: FXD, FXDB, FXDL, FXDX, FXDWG",
-        desc: "Brand new Kraus Dynamoto SP inverted front end kit. Never run, still in box. Complete with radial caliper mounts, axle, front headlight block, fender mounts, and triple trees. Fits 1991-2017 Dyna models. Transforms handling and stance. $2489 + shipping.",
-        img: "https://i.postimg.cc/pX36T0Js/IMG-7416.jpg"
-      },
-      {
-        id: 37,
-        name: "OEM Inner Fairing - Orange Lava Dark Alloy - 2018 CVO Street Glide",
-        price: 216,
-        category: "Body",
-        fitment: "2014-2023 Harley Street Glide FLHX / 2018 CVO Street Glide FLHXSE",
-        desc: "OEM Harley inner fairing in Orange Lava Dark Alloy. Factory CVO color for 2018 Street Glide FLHXSE. Includes gauge trim shown. Clean paint, no cracks or damage. Fits 2014-2023 Street Glide models. $216 + shipping.",
-        img: "https://i.postimg.cc/rp40TpFj/IMG-7421.jpg"
-      },
-      {
-        id: 38,
-        name: "Rockford Fosgate Stage 2 Fairing Speakers w/ Grills - 14-23 Touring",
-        price: 200,
-        category: "Body",
-        fitment: "2014-2023 Harley Touring: Street Glide, Road Glide",
-        desc: "Harley-Davidson Rockford Fosgate Stage 2 fairing speakers with OEM grills. 6.5\" speakers with dual tweeters. Includes HD/Rockford grills shown. Fits 2014-2023 Street Glide and Road Glide fairings. Plug and play upgrade over stock. $200 + shipping.",
-        img: "https://i.postimg.cc/pLCwGQtQ/IMG-7426.jpg"
-      },
-      {
-        id: 39,
-        name: "Ohlins STX36 Blackline HD779 13\" Shocks - Fully Adjustable",
-        price: 900,
-        category: "Suspension",
-        fitment: "2014-2025 Harley Touring: Street Glide, Road Glide, Road King, Ultra",
-        desc: "Ohlins STX36 Blackline HD779 13-inch rear shocks. Fully adjustable compression, rebound, and preload. Remote reservoirs with gold finish. Includes adjustment tools shown. Fits 2014-2025 Touring models. The gold standard for bagger suspension. $900 + shipping.",
-        img: "https://i.postimg.cc/m2DC1BgP/IMG-7428.jpg"
-      },
-      {
-        id: 40,
-        name: "Rockford Fosgate Stage II Complete Audio Kit - Fairing + Bags + Amp",
-        price: 290,
-        category: "Body",
-        fitment: "2014-2023 Harley Touring: Street Glide, Road Glide",
-        desc: "Complete Rockford Fosgate Stage II audio system. Includes: (1) Pair 6.5\" Stage II fairing speakers 76001298, (1) Pair 6x9\" TMS24-69 saddlebag speakers, (1) Rockford Fosgate Stage II amplifier, OEM speaker grills, and install instructions. Excellent working condition. Fits 2014-2023 Street Glide and Road Glide. $290 + shipping for complete kit.",
-        img: "https://i.postimg.cc/3wd32fD4/IMG-7431.jpg"
-      },
-      {
-        id: 41,
-        name: "Screamin Eagle Ohlins 13\" Rear Shocks - Black - 10-26 Touring",
-        price: 450,
-        category: "Suspension",
-        fitment: "2010-2026 Harley Touring: Street Glide, Road Glide, Road King, Ultra",
-        desc: "Harley-Davidson Screamin Eagle Ohlins 13-inch rear shocks. Co-branded Ohlins/Screamin Eagle with black reservoirs. Fully adjustable. Includes adjustment wrenches and install hardware. Fits 2010-2026 Touring models. Premium factory performance suspension at half retail. $450 + shipping.",
-        img: "https://i.postimg.cc/tCDGR1q7/IMG-7436.jpg"
-      },
-      {
-        id: 42,
-        name: "Speed-Kings Baja Designs LP6 Road Glide Kit - 15-23 - Black",
-        price: 600,
-        category: "Body",
-        fitment: "2015-2023 Harley Road Glide FLTRX/FLTRXS",
-        desc: "Speed-Kings Baja Designs LP6 LED light kit for 2015-2023
+      { id: 1, name: "CVO 110 Screamin Eagle Twin Cam Engine - 0 Miles", price: 5700, category: "Engine", fitment: "Touring/Dyna/Softail Twin Cam models", desc: "BRAND NEW 110\" CVO Screamin Eagle Twin Cam. Dealer take-off with 0 MILES on odometer. Removed for larger crate engine swap. Includes what you see. $5700 + shipping. Contact for exact quote.", img: "https://i.postimg.cc/FsNW7KBV/IMG-7267.jpg" },
+      { id: 2, name: "Vance & Hines High Output Exhaust w/ Heat Shields", price: 700, category: "Exhaust", fitment: "2023 Road Glide ST / M8 Touring models", desc: "Vance & Hines High Output 2-into-1 exhaust with heat shields. Only 2500 miles. Pulled from 2023 Road Glide ST. Black finish. Includes pipe and heat shields. $700 + shipping.", img: "https://i.postimg.cc/V6Yh2Bb3/IMG-7234.jpg" },
+      { id: 3, name: "Ohlins HD779 Rear Shocks - Brand New", price: 700, category: "Suspension", fitment: "2014-2026 Harley Touring models", desc: "Brand new Ohlins HD779 rear shocks. Never installed, still in box. Includes remote reservoirs and mounting hardware shown. Fits 2014-2026 Touring. $700 + shipping.", img: "https://i.postimg.cc/0NnB7WtK/IMG-7279.jpg" },
+      { id: 4, name: "Flo Motorsports V5 Bagger Floorboards + Brake Kit", price: 250, category: "Controls", fitment: "1984-2026 Harley Touring models", desc: "Set of Flo Motorsports V5 Bagger floorboards in black. Includes adjustable brake arm and matching peg. Very good condition, no scrapes at all. Fits 84-25 Touring. $250 + shipping for complete set.", img: "https://i.postimg.cc/sf9Tt0PF/IMG-7281.jpg" },
+      { id: 5, name: "OEM Harley Prodigy Wheel Set - 2020 Road Glide Special", price: 1500, category: "Wheels", fitment: "2017-2026 Harley Touring models", desc: "OEM Harley Prodigy wheels off 2020 Road Glide Special. 19x3.50 front with NEW Shinko 777 130/60/19. 18x5.00 cush drive rear with Shinko 999 180/55/18 - tire is bald. Wheels in excellent condition. $1500 + shipping.", img: "https://i.postimg.cc/XYwq8dST/IMG-7282.jpg" },
+      { id: 6, name: "Custom Touring Seat - Marine Suede Diamond Stitch", price: 400, category: "Seats", fitment: "2009-2023 Harley Touring models", desc: "Brand new custom seat. Re-trimmed in black marine grade suede - UV stabilized, water resistant. Blacked out badge, custom embroidered pillion, white double diamond stitched fade-out insert. Never been sat on. Fits 2009-2023 Touring. $400 + shipping. Core exchange available.", img: "https://i.postimg.cc/XJTXL8JH/IMG-7283.jpg" },
+      { id: 7, name: "1977 XLCR 7-Spoke Morris Mag Wheels - Restored 3-Disc Set", price: 700, category: "Wheels", fitment: "1977 Harley XLCR Cafe Racer - One Year Only OEM", desc: "Rare OEM 1977 XLCR 7-spoke Morris Mag 3-disc wheels. Used on all 1977 Harley Factory XLCR Cafe Racers. Restored to factory condition. Comes with all needed hardware. Probably the best restored set available. $700 + shipping.", img: "https://i.postimg.cc/GmJgvLzC/IMG-7284.jpg" },
+      { id: 8, name: "KST Pathfinder 16\" Apes + LA Choppers Riser + HD Grips", price: 500, category: "Handlebars", fitment: "Road King, Road Glide, Softail models", desc: "KST Pathfinder 16 inch fully adjustable ape hangers. Includes LA Choppers riser with built-in set screws and Harley Davidson grips. Only 7 months old. Fits Road King, Road Glide, Softail. $500 + shipping for complete setup.", img: "https://i.postimg.cc/xdBs2X18/IMG-7285.jpg" },
+      { id: 9, name: "Bassani Mid Length 2-1 Super Bike Exhaust - M8 Bagger", price: 500, category: "Exhaust", fitment: "2017-Up Harley Touring Bagger models", desc: "Bassani Mid Length 2-into-1 Super Bike exhaust system. Stainless finish. Includes mounting bracket and hardware shown. Fits 2017-Up M8 Baggers. Deep, aggressive sound. $500 + shipping.", img: "https://i.postimg.cc/mgHznkKZ/IMG-7286.jpg" },
+      { id: 10, name: "Matte Black Enforcer Wheels + Pulley - Touring", price: 600, category: "Wheels", fitment: "2009-Up Harley Touring models", desc: "Matte black Enforcer wheels with matching pulley. 19\" front / 18\" rear. Clean finish, ready to bolt on. Fits 2009-Up Touring models and other HD models with proper adapters. $600 + shipping.", img: "https://i.postimg.cc/vZsgpbys/IMG-7287.jpg" },
+      { id: 11, name: "Vivid Black Fatboy Tank - 08-17 - No Pump", price: 300, category: "Tanks", fitment: "2008-2017 Harley Fatboy models", desc: "Vivid Black fuel tank with red lettering for 08-17 Fatboy. Does NOT include fuel pump. Needs a good clean out inside. Great condition externally or use as shed ornament. $300 + shipping.", img: "https://i.postimg.cc/x13RZ6Wx/IMG-7288.jpg" },
+      { id: 12, name: "Advanblack King Tour Pack - Billiard Gray Loaded", price: 500, category: "Luggage", fitment: "2014-2023 Harley Touring models", desc: "Advanblack King Tour Pack in Billiard Gray with black leather wrap-around backrest. Built-in speaker pods, full interior carpet liner, rear LED light bar with wiring harnesses. Chrome latch and lock set installed. Excellent condition. $500 + shipping.", img: "https://i.postimg.cc/0Nm8xJ0B/IMG-7289.jpg" },
+      { id: 13, name: "OVER Racing SS11 Rearsets - Buell S1/X1/Sportster", price: 437, category: "Controls", fitment: "1999 Buell S1 Lightning, X1, M2, S3 / XL883, XL1200 Sportster", desc: "Rare OVER Racing Japan SS11 aftermarket rearsets for Buell S1 Lightning 1999. Billet aluminum with adjustable pegs. Includes shift linkage, brake lever, and mounting hardware shown. Also fits Buell X1, M2, S3 and Sportster XL883/XL1200 with adapters. $437 + shipping.", img: "https://i.postimg.cc/KvrpXcTP/IMG-7290.jpg" },
+      { id: 14, name: "Rebuilt 103\" Twin Cam A - S&S 570 / Wiseco / Trued Crank", price: 5340, category: "Engine", fitment: "1999-2006 Harley Twin Cam A Touring/Dyna/Softail", desc: "Fully rebuilt 103\" Twin Cam A engine with new powder coat. Head work: AV&V springs, .025\" over valves, guides replaced. S&S 570 cams, cam bearings, lifters. Wiseco Hi-Performance forged piston kit. 96\" jugs bored to 103\" specs. Crank trued and welded. Case had only 14,000 kms. Engine stand included. $5340 + shipping.", img: "https://i.postimg.cc/269m7FkH/IMG-7291.jpg" },
+      { id: 15, name: "FXLRS Front Fork Set - 49mm Dual Disc - M8 Softail", price: 540, category: "Suspension", fitment: "2018-2024 Harley Softail Low Rider S / M8 Softail", desc: "OEM Harley FXLRS Low Rider S front fork assembly. 49mm Showa dual-disc forks with triple trees and hardware shown. Fits 2018-2024 M8 Softail models. Clean take-off condition. $540 + shipping.", img: "https://i.postimg.cc/wx5nzk8f/IMG-7292.jpg" },
+      { id: 16, name: "Bassani Stainless 2-1 Super Bike Shorty - M8 Softail", price: 400, category: "Exhaust", fitment: "2018-Up Harley M8 Softail: Low Rider S, Street Bob, Fat Bob", desc: "Bassani Stainless Steel 2-into-1 Super Bike muffler - short/slim version. Raw stainless finish. Great condition, ready to install. Fits 2018-Up M8 Softails: Low Rider, Low Rider S, Street Bob, Fat Bob. Aggressive sound, weight savings. $400 + shipping.", img: "https://i.postimg.cc/3NSM2ghh/IMG-7293.jpg" },
+      { id: 17, name: "Complete Paint Set - 14-23 Ultra Classic - Superior Blue", price: 2200, category: "Body", fitment: "2014-2023 Harley Davidson Ultra Classic FLHTCU", desc: "Complete OEM paint set in Superior Blue. Includes: fuel tank, front fender, rear fender, saddlebags with lids, side covers, inner/outer fairing, and tour pack with luggage rack. Fits 2014-2023 Ultra Classic. Great condition overall. $2200 + shipping for all.", img: "https://i.postimg.cc/V6FW0Btc/IMG-7295.jpg" },
+      { id: 18, name: "Detachable Sissy Bar Backrest - 09+ Touring - Your Choice", price: 200, category: "Seats", fitment: "2009-2026 Harley Touring models: Street Glide, Road Glide, Road King, Electra Glide", desc: "Aftermarket detachable sissy bar backrests with mounting brackets. Multiple styles available: standard height, tall, with/without luggage rack. Fits 2009-Up Touring models with 4-point docking hardware. Your choice from inventory shown. $200 each + shipping.", img: "https://i.postimg.cc/sXJtcN8T/IMG-7296.jpg" },
+      { id: 19, name: "Vance & Hines Big Radius 2-2 Chrome - M8 Softail - NEW", price: 500, category: "Exhaust", fitment: "2018-2021 Harley Softail Street Bob FXBB / 2018+ M8 Softail", desc: "Genuine Vance & Hines Big Radius 2-into-2 exhaust system. Part #26077. Unused complete kit in original condition. Chrome finish with full mounting bracket, hardware, clamps, and instructions included. Fits 2018-2021 Harley Softail Street Bob and other M8 Softail models with mid controls. $500 + shipping.", img: "https://i.postimg.cc/KjMpWps8/IMG-7298.jpg" },
+      { id: 20, name: "2007 CVO Ultra Tank - Scarlet Red/Pewter Silver", price: 550, category: "Tanks", fitment: "1997-2007 Harley Touring CVO Ultra Classic FLHTCUSE", desc: "OEM Harley CVO tank in Scarlet Red & Pewter Silver two-tone. Fits 2007 CVO Ultra Classic and 97-07 Touring models. Tank badges intact, no dents. Clean inside. One-year-only CVO color. Does not include fuel pump or cap. $550 + shipping.", img: "https://i.postimg.cc/SKPwt9N8/IMG-7299.jpg" },
+      { id: 21, name: "Vivid Black Stretched Saddlebags - 14-23 Touring", price: 400, category: "Body", fitment: "2014-2023 Harley Touring: Street Glide, Road Glide, Road King", desc: "OEM-style Vivid Black stretched saddlebags for 2014-2023 Touring models. 4\" stretch, clean OEM paint. Includes lids and hardware shown. No speakers or lights. Direct bolt-on for Street Glide, Road King. $400 + shipping for the pair.", img: "https://i.postimg.cc/SKPwt9N8/IMG-7299.jpg" },
+      { id: 22, name: "21\" Wheel Wrap Front Fender - White Primer - 14+ Touring", price: 300, category: "Body", fitment: "2014-2026 Harley Touring: Street Glide, Road Glide, Road King", desc: "Aftermarket 21\" wheel wrap front fender in white primer. Fits 2014+ Touring models running 21\" or 23\" front wheels. Smooth finish, ready for paint. Includes mounting hardware. Perfect for big wheel bagger builds. $300 + shipping.", img: "https://i.postimg.cc/SKPwt9N8/IMG-7299.jpg" },
+      { id: 23, name: "OEM Front Fender - Superior Blue/Silver - 14-23 Touring", price: 350, category: "Body", fitment: "2014-2023 Harley Touring: Ultra Limited, Street Glide Special", desc: "OEM Harley front fender in Superior Blue with Silver Fortune accent. Fits 2014-2023 Touring models. Clean factory paint, no dents or chips. Direct bolt-on for Ultra Limited, Street Glide Special, Road Glide Special. $350 + shipping.", img: "https://i.postimg.cc/SKPwt9N8/IMG-7299.jpg" },
+      { id: 24, name: "OEM Rear Fender w/ Chrome Fascia - Vivid Black - 14-23 Touring", price: 250, category: "Body", fitment: "2014-2023 Harley Touring: Street Glide, Road Glide, Road King", desc: "OEM Harley rear fender in Vivid Black with chrome fascia strip. Fits 2014-2023 Touring models. Clean factory paint, no dents. Includes fascia and LED tri-bar. Direct bolt-on for Street Glide, Road King. $250 + shipping.", img: "https://i.postimg.cc/SKPwt9N8/IMG-7299.jpg" },
+      { id: 25, name: "Python 2-into-1 Exhaust - Black - Twin Cam Touring", price: 1432, category: "Exhaust", fitment: "1999-2016 Harley Touring: Street Glide, Road Glide, Road King", desc: "Brand new out of box Python 2-into-1 exhaust system. Black finish with slash cut tip. Includes mounting bracket and hardware shown. Fits 1999-2016 Twin Cam Touring models. Aggressive sound, performance gains. $1432 + shipping.", img: "https://i.postimg.cc/XvbL9vx9/IMG-7362.jpg" },
+      { id: 26, name: "NOS OEM FXR Gauge Set - Speedo + Tach - Brand New", price: 412, category: "Gauges", fitment: "1982-1994 Harley FXR models: FXRS, FXRT, FXRP, FXRD", desc: "NOS OEM Harley FXR gauge set. Brand new never used, still in perfect condition. Speedometer 0-120 MPH + Tachometer 0-8000 RPM. Includes mounting bracket. 0 miles on odometer. Fits 1982-1994 FXR models. $412 + shipping.", img: "https://i.postimg.cc/VLNN4yKf/IMG-7367.jpg" },
+      { id: 27, name: "Screamin Eagle 103 Air Cleaner - Oval Chrome/Black", price: 320, category: "Intake", fitment: "2014-2017 Harley Touring 103\" Twin Cam models", desc: "OEM Harley Screamin Eagle 103 air cleaner assembly. Oval chrome cover with black 103 insert. Fits 2014-2017 Touring models with 103\" Twin Cam. Complete with backing plate and mounting hardware shown. $320 + shipping.", img: "https://i.postimg.cc/dtbHsFkC/IMG-7371.jpg" },
+      { id: 28, name: "Complete Road Glide Body Kit - Red/Black Two-Tone - NEW", price: 2531, category: "Body", fitment: "2015-2023 Harley Road Glide FLTRX/FLTRXS models", desc: "Brand new complete Road Glide body kit in Red/Black two-tone. Includes: outer fairing, inner fairing, tank, front fender, rear fender, saddlebags with lids, and tour pack. All pieces painted and ready to install. Fits 2015-2023 Road Glide models. $2531 + shipping for complete set. Will sell pieces individually - email for pricing.", img: "https://i.postimg.cc/ydfsJP2p/IMG-7376.jpg" },
+      { id: 29, name: "Stretched Saddlebags w/ Speaker Lids - Billiard Red - 14-25 Touring", price: 519, category: "Luggage", fitment: "2014-2025 Harley Touring: Street Glide, Road Glide, Road King, Ultra", desc: "Stretched saddlebags with speaker lids in beautiful Billiard Red. Includes hardware, locks, and keys. Speaker lids ready for 6x9s. Fits 2014-2025 Touring models. Clean paint, no scratches. $519 + shipping for the pair.", img: "https://i.postimg.cc/qRVgRGh9/IMG-7386.jpg" },
+      { id: 30, name: "Saddlemen RoadSofa™ Touring Seat - Diamond Stitch - Black/Gold", price: 678, category: "Seats", fitment: "2008-2025 Harley Touring: Street Glide, Road Glide, Road King, Ultra", desc: "Saddlemen RoadSofa™ touring seat with rider backrest. Black vinyl with gold diamond stitching. Comfort that hits different + style that matches your build. Tons of stitch color options available - email to customize. Fits 2008-2025 Touring bagger models. $678 + shipping.", img: "https://i.postimg.cc/L63HBpq0/IMG-7392.jpg" },
+      { id: 31, name: "Saddlemen RoadSofa LS Seat w/ Backrest - Honeycomb Stitch - Black", price: 351, category: "Seats", fitment: "2008-2025 Harley Touring: Street Glide, Road Glide, Road King, Ultra", desc: "Saddlemen RoadSofa LS touring seat with adjustable rider backrest. Black vinyl with honeycomb diamond stitch pattern. Deep comfort foam + GelCore technology. Fits 2008-2025 Touring bagger models. $351 + shipping.", img: "https://i.postimg.cc/FHfhtJCX/IMG-7399.jpg" },
+      { id: 32, name: "NOS OEM Touring Tank - Diamond Ice Sinister Blue Pearl - NEW", price: 498, category: "Tanks", fitment: "2008-2023 Harley Touring: Street Glide, Road Glide, Road King, Ultra", desc: "NOS OEM Harley touring fuel tank in Diamond Ice Sinister Blue Pearl. Brand new, never mounted. Factory CVO color. Includes mounting tabs shown. Does NOT include fuel pump or cap. Fits 2008-2023 Touring models with 6-gallon tank. $498 + shipping.", img: "https://i.postimg.cc/Px6tszHP/IMG-7403.jpg" },
+      { id: 33, name: "OEM Saddlebag Speaker Lids - Reef Blue - 14-25 Road King", price: 215, category: "Luggage", fitment: "2014-2025 Harley Touring: Road King, Street Glide, Road Glide", desc: "OEM Harley saddlebag speaker lids in Reef Blue. Includes speaker grills shown. Ready for 6x9 speakers. Fits 2014-2025 Touring saddlebags. Clean factory paint, no scratches. $215 + shipping for the pair.", img: "https://i.postimg.cc/3N5HHLqs/IMG-7407.jpg" },
+      { id: 34, name: "Legend Aero Air Ride Suspension - EVO Touring - NEW", price: 1435, category: "Suspension", fitment: "1984-1999 Harley EVO Touring: Electra Glide, Road King, Ultra Classic", desc: "Legend Aero air ride suspension system. New in box. Complete kit with shocks, compressor, wiring, and hardware shown. Fits 1984-1999 EVO Touring models. Drop your bagger on command. $1435 + shipping.", img: "https://i.postimg.cc/SQ3nnk0s/IMG-7409.jpg" },
+      { id: 35, name: "Custom Molded Speaker Lids - Vivid Black - Road Glide - Loaded", price: 215, category: "Luggage", fitment: "2014-2025 Harley Touring: Road Glide, Street Glide, Road King", desc: "Hand molded custom speaker lids in Vivid Black. Loaded with Rockford Fosgate speakers and grills. Came off Road Glide. Fits 2014-2025 Touring saddlebags. Ready to wire and run. $215 + shipping for the pair with speakers.", img: "https://i.postimg.cc/6qXQtV1J/IMG-7412.jpg" },
+      { id: 36, name: "Kraus Dynamoto SP Inverted Front End Kit - Dyna - NEW", price: 2489, category: "Suspension", fitment: "1991-2017 Harley Dyna: FXD, FXDB, FXDL, FXDX, FXDWG", desc: "Brand new Kraus Dynamoto SP inverted front end kit. Never run, still in box. Complete with radial caliper mounts, axle, front headlight block, fender mounts, and triple trees. Fits 1991-2017 Dyna models. Transforms handling and stance. $2489 + shipping.", img: "https://i.postimg.cc/pX36T0Js/IMG-7416.jpg" },
+      { id: 37, name: "OEM Inner Fairing - Orange Lava Dark Alloy - 2018 CVO Street Glide", price: 216, category: "Body", fitment: "2014-2023 Harley Street Glide FLHX / 2018 CVO Street Glide FLHXSE", desc: "OEM Harley inner fairing in Orange Lava Dark Alloy. Factory CVO color for 2018 Street Glide FLHXSE. Includes gauge trim shown. Clean paint, no cracks or damage. Fits 2014-2023 Street Glide models. $216 + shipping.", img: "https://i.postimg.cc/rp40TpFj/IMG-7421.jpg" },
+      { id: 38, name: "Rockford Fosgate Stage 2 Fairing Speakers w/ Grills - 14-23 Touring", price: 200, category: "Body", fitment: "2014-2023 Harley Touring: Street Glide, Road Glide", desc: "Harley-Davidson Rockford Fosgate Stage 2 fairing speakers with OEM grills. 6.5\" speakers with dual tweeters. Includes HD/Rockford grills shown. Fits 2014-2023 Street Glide and Road Glide fairings. Plug and play upgrade over stock. $200 + shipping.", img: "https://i.postimg.cc/pLCwGQtQ/IMG-7426.jpg" },
+      { id: 39, name: "Ohlins STX36 Blackline HD779 13\" Shocks - Fully Adjustable", price: 900, category: "Suspension", fitment: "2014-2025 Harley Touring: Street Glide, Road Glide, Road King, Ultra", desc: "Ohlins STX36 Blackline HD779 13-inch rear shocks. Fully adjustable compression, rebound, and preload. Remote reservoirs with gold finish. Includes adjustment tools shown. Fits 2014-2025 Touring models. The gold standard for bagger suspension. $900 + shipping.", img: "https://i.postimg.cc/m2DC1BgP/IMG-7428.jpg" },
+      { id: 40, name: "Rockford Fosgate Stage II Complete Audio Kit - Fairing + Bags + Amp", price: 290, category: "Body", fitment: "2014-2023 Harley Touring: Street Glide, Road Glide", desc: "Complete Rockford Fosgate Stage II audio system. Includes: (1) Pair 6.5\" Stage II fairing speakers 76001298, (1) Pair 6x9\" TMS24-69 saddlebag speakers, (1) Rockford Fosgate Stage II amplifier, OEM speaker grills, and install instructions. Excellent working condition. Fits 2014-2023 Street Glide and Road Glide. $290 + shipping for complete kit.", img: "https://i.postimg.cc/3wd32fD4/IMG-7431.jpg" },
+      { id: 41, name: "Screamin Eagle Ohlins 13\" Rear Shocks - Black - 10-26 Touring", price: 450, category: "Suspension", fitment: "2010-2026 Harley Touring: Street Glide, Road Glide, Road King, Ultra", desc: "Harley-Davidson Screamin Eagle Ohlins 13-inch rear shocks. Co-branded Ohlins/Screamin Eagle with black reservoirs. Fully adjustable. Includes adjustment wrenches and install hardware. Fits 2010-2026 Touring models. Premium factory performance suspension at half retail. $450 + shipping.", img: "https://i.postimg.cc/tCDGR1q7/IMG-7436.jpg" },
+      { id: 42, name: "Speed-Kings Baja Designs LP6 Road Glide Kit - 15-23 - Black", price: 600, category: "Body", fitment: "2015-2023 Harley Road Glide FLTRX/FLTRXS", desc: "Speed-Kings Baja Designs LP6 LED light kit for 2015-2023 Road Glide. Includes dual LP6 lights, mounting bracket, wiring harness, and hardware. Black finish. Plug and play install. Transforms night riding visibility. $600 + shipping.", img: "https://i.postimg.cc/3wd32fD4/IMG-7431.jpg" },
+      { id: 43, name: "Arlen Ness 21\" Front Fender - Black - 14-23 Touring", price: 275, category: "Body", fitment: "2014-2023 Harley Touring: Street Glide, Road Glide, Road King", desc: "Arlen Ness 21-inch wrap front fender in gloss black. Steel construction. Fits 2014
